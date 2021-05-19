@@ -11,11 +11,20 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: - Properties
     var window: UIWindow?
 
-
+    // MARK: - Application Life Cycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+       
+        guard let rootViewController = window?.rootViewController as? RootViewController else {
+            fatalError("Unexpected Root View Controller")
+        }
+        // Initialize Root View Model
+        let rootViewModel = RootViewModel()
+        
+        // Configure Root View Controller
+        rootViewController.viewModel = rootViewModel
         return true
     }
 
